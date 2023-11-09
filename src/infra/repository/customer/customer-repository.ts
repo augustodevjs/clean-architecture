@@ -1,5 +1,5 @@
 import { Address, Customer, ICustomer } from "../../../domain";
-import {CustomerModel} from "./sequelize";
+import { CustomerModel } from "./sequelize";
 
 export class CustomerRepository implements ICustomer {
   async create(entity: Customer): Promise<void> {
@@ -11,7 +11,7 @@ export class CustomerRepository implements ICustomer {
       zipcode: entity.address.zip,
       city: entity.address.city,
       active: entity.isActive(),
-      rewardPoints: entity.rewardsPoints,
+      rewardPoints: entity.rewardPoints,
     })
   }
 
@@ -24,7 +24,7 @@ export class CustomerRepository implements ICustomer {
         zipcode: entity.address.zip,
         city: entity.address.city,
         active: entity.isActive(),
-        rewardPoints: entity.rewardsPoints,
+        rewardPoints: entity.rewardPoints,
       },
       {
         where: {

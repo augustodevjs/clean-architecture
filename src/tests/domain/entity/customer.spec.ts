@@ -48,7 +48,7 @@ describe("Customer unit tests", () => {
     const customer = new Customer("123", "John");
 
     // Act
-    customer.desactivate();
+    customer.deactivate();
 
     // Assert
     expect(customer.isActive()).toBe(false);

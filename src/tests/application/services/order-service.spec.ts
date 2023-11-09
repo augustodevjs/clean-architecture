@@ -20,7 +20,7 @@ describe("Order Service Unit Test", () => {
 
     const order = OrderService.placeOrder(customer, [item1]);
 
-    expect(customer.rewardsPoints).toBe(5);
+    expect(customer.rewardPoints).toBe(5);
     expect(order.total()).toBe(10);
   });
 
@@ -38,12 +38,12 @@ describe("Order Service Unit Test", () => {
 
   it("Should add reward points ", () => {
     const customer = new Customer("c1", "Customer 1");
-    expect(customer.rewardsPoints).toBe(0);
+    expect(customer.rewardPoints).toBe(0);
 
     customer.addRewardPoints(10)
-    expect(customer.rewardsPoints).toBe(10);
+    expect(customer.rewardPoints).toBe(10);
 
     customer.addRewardPoints(10)
-    expect(customer.rewardsPoints).toBe(20);
+    expect(customer.rewardPoints).toBe(20);
   });
 })
