@@ -1,5 +1,5 @@
-import { Customer, Order, OrderItem } from "../../domain"
-import { OrderService } from "../../application";
+import { Customer, Order, OrderItem } from "../../../domain"
+import { OrderService } from "../../../application";
 
 describe("Order Service Unit Test", () => {
   it("Should get total of orders", () => {

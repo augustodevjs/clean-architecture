@@ -9,25 +9,24 @@ export class Address {
     this._city = city;
     this._street = street;
     this._number = number;
-
     this.validate();
   }
 
   validate() {
-    if (!this._street) {
+    if (this._street.length === 0) {
       throw new Error("Street is required")
     }
 
-    if (!this._number) {
-      throw new Error("Number is required")
+    if (this._number < 0) {
+      throw new Error("Number must be greater than 0")
     }
 
-    if (!this._city) {
-      throw new Error("city is required")
+    if (this._city.length === 0) {
+      throw new Error("City is required")
     }
 
-    if (!this._zip) {
-      throw new Error("zip is required")
+    if (this._zip.length === 0) {
+      throw new Error("Zip is required")
     }
   }
 

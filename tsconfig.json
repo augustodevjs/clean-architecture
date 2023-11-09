@@ -109,6 +109,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/tests/services", "src/domain/contracts/event/IEventDispatcherts"
+    "src/tests/application/services", "src/domain/contracts/event/IEventDispatcherts"
   ]
 }
