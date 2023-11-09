@@ -1,6 +1,6 @@
-import {validate} from "uuid";
-import {Address, ICustomer} from "../../../domain";
-import {UpdateCustomerInputModel, UpdateCustomerViewModel} from "../../dto";
+import { validate } from "uuid";
+import { Address, ICustomer } from "../../../domain";
+import { UpdateCustomerInputModel, UpdateCustomerViewModel } from "../../dto";
 
 export class UpdateCustomerUseCase {
   private customerRepository: ICustomer;

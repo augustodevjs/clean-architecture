@@ -1,5 +1,5 @@
-import {CustomerFactory, ICustomer} from "../../../domain";
-import {CreateCustomerInputModel, CreateCustomerViewModel} from "../../dto";
+import { CustomerFactory, ICustomer } from "../../../domain";
+import { CreateCustomerInputModel, CreateCustomerViewModel } from "../../dto";
 
 export class CreateCustomerUseCase {
   private customerRepository: ICustomer;

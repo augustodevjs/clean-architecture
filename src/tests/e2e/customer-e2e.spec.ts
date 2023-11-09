@@ -1,5 +1,5 @@
 import request from "supertest";
-import { app, sequelize } from "../../api";
+import {sequelize, app} from "../../api";
 
 describe("E2E test for customer", () => {
   beforeEach(async () => {
@@ -12,15 +12,15 @@ describe("E2E test for customer", () => {
 
   const address = {
     street: "123 Main St",
-    city: "Anytown",
     number: 123,
+    city: "Anytown",
     zip: "12345",
   };
 
   it("should create a customer", async () => {
     const response = await request(app)
-      .post("/customer")
-      .send({ name: "John Doe", address });
+        .post("/customer")
+        .send({ name: "John Doe", address });
 
     expect(response.status).toEqual(201);
     expect(response.body).toHaveProperty("id");
@@ -28,12 +28,12 @@ describe("E2E test for customer", () => {
     expect(response.body.address).toEqual(address);
   });
 
-  it("should not create a customer", async () => {
+  it("should not create a customer when name is not provided", async () => {
     const response = await request(app)
-      .post("/customer")
-      .send({ name: "John" });
+        .post("/customer")
+        .send({ name: "", address });
 
-    expect(response.status).toEqual(500);
+    expect(response.status).toEqual(400);
   });
 
   it("should list all customers", async () => {
@@ -49,5 +49,43 @@ describe("E2E test for customer", () => {
 
     expect(customer1.name).toEqual("John Doe");
     expect(customer2.name).toEqual("Jane Doe");
+  });
+
+  it("should list all customers in XML", async () => {
+    const customer1 = await request(app).post("/customer").send({ name: "John Doe", address });
+    const customer2 = await request(app).post("/customer").send({ name: "Jane Doe", address });
+
+    const responseXML = await request(app)
+        .get("/customer")
+        .set("Accept", "application/xml")
+        .send();
+
+    expect(responseXML.status).toEqual(200);
+    expect(responseXML.text).toContain("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+
+    expect(responseXML.text)
+        .toMatchInlineSnapshot(`
+		"<?xml version="1.0" encoding="UTF-8"?>
+		<customers>
+		 <customer>
+		  <id>${customer1.body.id}</id>
+		  <name>${customer1.body.name}</name>
+		  <address>
+		   <city>Anytown</city>
+		   <number>123</number>
+		   <street>123 Main St</street>
+		   <zip>12345</zip>
+		  </address>
+		  <id>${customer2.body.id}</id>
+		  <name>${customer2.body.name}</name>
+		  <address>
+		   <city>Anytown</city>
+		   <number>123</number>
+		   <street>123 Main St</street>
+		   <zip>12345</zip>
+		  </address>
+		 </customer>
+		</customers>"
+	`);
   });
 });

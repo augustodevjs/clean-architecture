@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 
 import { CustomerRepository } from '../../infra';
-import { CreateCustomerUseCase, ListCustomerUseCase } from '../../application';
+import { CreateCustomerUseCase, ListCustomerUseCase, ListCustomerViewModel } from '../../application';
+import { CustomerPresenter } from '../presenters';
 
 export const CustomerRoute = express.Router();
 
@@ -25,18 +26,21 @@ CustomerRoute.post('/', async (request: Request, response: Response) => {
 
     response.status(201).send(customerViewModel);
   } catch (error) {
-    response.status(500).send(error);
+    response.status(400).send(error);
   }
 })
 
-CustomerRoute.get('/', async (request: Request, response: Response) => {
+CustomerRoute.get("/", async (_, response: Response) => {
   const usecase = new ListCustomerUseCase(repository);
 
   try {
-    const listCustomerViewModel = await usecase.execute();
+    const output: ListCustomerViewModel = await usecase.execute();
 
-    response.status(200).send(listCustomerViewModel);
+    response.format({
+      json: async () => response.status(200).send(output),
+      xml: async () => response.send(CustomerPresenter.listXML(output)),
+    });
   } catch (error) {
-    response.status(500).send(error);
+    response.status(400).send(error);
   }
-})
+});

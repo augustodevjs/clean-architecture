@@ -1,5 +1,5 @@
-import {ICustomer} from "../../../domain";
-import {ListCustomerViewModel} from "../../dto";
+import { ICustomer } from "../../../domain";
+import { ListCustomerViewModel } from "../../dto";
 
 export class ListCustomerUseCase {
   private customerRepository: ICustomer;
