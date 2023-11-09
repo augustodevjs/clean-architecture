@@ -1,10 +1,10 @@
-import express, { Express } from "express";
+import express from "express";
 import { Sequelize } from "sequelize-typescript";
 
 import { CustomerModel } from "../infra";
 import { CustomerRoute } from "./routes";
 
-export const app: Express = express();
+export const app = express();
 
 app.use(express.json());
 app.use("/customer", CustomerRoute)

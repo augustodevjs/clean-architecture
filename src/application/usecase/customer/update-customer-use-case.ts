@@ -1,6 +1,6 @@
-import { validate } from "uuid";
-import { Address, ICustomer } from "../../../domain";
-import { UpdateCustomerInputModel, UpdateCustomerViewModel } from "../../../application";
+import {validate} from "uuid";
+import {Address, ICustomer} from "../../../domain";
+import {UpdateCustomerInputModel, UpdateCustomerViewModel} from "../../dto";
 
 export class UpdateCustomerUseCase {
   private customerRepository: ICustomer;
@@ -36,7 +36,7 @@ export class UpdateCustomerUseCase {
 
     await this.customerRepository.update(customer);
 
-    const outputDto: UpdateCustomerViewModel = {
+    return {
       id: customer.id,
       name: customer.name,
       address: {
@@ -46,7 +46,5 @@ export class UpdateCustomerUseCase {
         zip: customer.address.zip
       }
     };
-
-    return outputDto;
   }
 }

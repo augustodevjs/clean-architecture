@@ -1,5 +1,5 @@
-import { ICustomer } from "../../../domain";
-import { ListCustomerViewModel } from "../../../application";
+import {ICustomer} from "../../../domain";
+import {ListCustomerViewModel} from "../../dto";
 
 export class ListCustomerUseCase {
   private customerRepository: ICustomer;
@@ -24,10 +24,8 @@ export class ListCustomerUseCase {
       };
     });
 
-    const listCustomerViewModel: ListCustomerViewModel = {
-      customers: customers
+    return {
+      customers
     };
-
-    return listCustomerViewModel;
   }
 }

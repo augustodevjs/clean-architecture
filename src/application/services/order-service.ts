@@ -1,5 +1,5 @@
+import { v4 as uuid } from 'uuid';
 import { Customer, Order, OrderItem } from "../../domain";
-import { v4 as uuid } from 'uuid'
 
 export class OrderService {
   static total(items: Order[]): number {
@@ -16,4 +16,4 @@ export class OrderService {
 
     return order;
   }
-} 
+}

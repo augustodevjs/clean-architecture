@@ -4,7 +4,7 @@ export abstract class BaseEntity {
   protected _id: string;
   public notification: Notification;
 
-  constructor() {
+  protected constructor() {
     this.notification = new Notification();
   }
 

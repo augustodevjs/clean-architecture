@@ -2,7 +2,7 @@ import { ICustomer } from "../../../domain";
 import {
 	FindCustomerInputModel,
 	FindCustomerViewModel,
-} from "../../../application";
+} from "../../dto";
 
 export class FindCustomerUseCase {
 	private customerRepository: ICustomer;

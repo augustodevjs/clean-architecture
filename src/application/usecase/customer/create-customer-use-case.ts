@@ -1,5 +1,5 @@
-import { CustomerFactory, ICustomer } from "../../../domain";
-import { CreateCustomerInputModel, CreateCustomerViewModel } from "../../../application";
+import {CustomerFactory, ICustomer} from "../../../domain";
+import {CreateCustomerInputModel, CreateCustomerViewModel} from "../../dto";
 
 export class CreateCustomerUseCase {
   private customerRepository: ICustomer;
@@ -16,7 +16,7 @@ export class CreateCustomerUseCase {
 
     await this.customerRepository.create(customer);
 
-    const outputDto: CreateCustomerViewModel = {
+    return {
       id: customer.id,
       name: customer.name,
       address: {
@@ -26,8 +26,6 @@ export class CreateCustomerUseCase {
         zip: customer.address.zip
       },
     };
-
-    return outputDto;
   }
 
 }
