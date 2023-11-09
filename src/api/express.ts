@@ -2,11 +2,12 @@ import express, { Express } from "express";
 import { Sequelize } from "sequelize-typescript";
 
 import { CustomerModel } from "../infra";
+import { CustomerRoute } from "./routes";
 
 export const app: Express = express();
 
 app.use(express.json());
-
+app.use("/customer", CustomerRoute)
 export let sequelize: Sequelize;
 
 const setupDb = async () => {
