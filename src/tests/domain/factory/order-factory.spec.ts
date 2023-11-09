@@ -1,4 +1,4 @@
-import {OrderFactory} from "../../domain";
+import { OrderFactory } from "../../../domain";
 import { v4 as uuid } from 'uuid'
 
 describe("Order Factory unit test", () => {

@@ -1,4 +1,4 @@
-import { Order, OrderItem } from "../../domain";
+import { Order, OrderItem } from "../../../domain";
 
 describe("Order unit tests", () => {
 

@@ -1,4 +1,4 @@
-import { Product } from "../../domain";
+import { Product } from "../../../domain";
 
 describe("Product unit tests", () => {
   it("Should throw error when Id is empty", () => {

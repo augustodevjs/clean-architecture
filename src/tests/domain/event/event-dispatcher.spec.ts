@@ -1,4 +1,4 @@
-import { EventDispatcher, ProductCreatedEvent, SendEmailWhenProductIsCreatedHandler } from "../../domain";
+import { EventDispatcher, ProductCreatedEvent, SendEmailWhenProductIsCreatedHandler } from "../../../domain";
 
 describe('Domain events tests', () => {
   it("should register an event handler", () => {

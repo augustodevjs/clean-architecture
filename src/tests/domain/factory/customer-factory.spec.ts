@@ -1,4 +1,4 @@
-import {CustomerFactory} from "../../domain";
+import { CustomerFactory } from "../../../domain";
 
 describe("Customer Factory unit tests", () => {
     const address = {

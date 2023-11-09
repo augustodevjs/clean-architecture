@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize-typescript'
-import { CustomerModel, CustomerRepository, OrderItemModel, OrderModel, OrderRepository, ProductModel, ProductRepository } from '../../infra'
-import { Address, Customer, Order, OrderItem, Product } from '../../domain'
+import { CustomerModel, CustomerRepository, OrderItemModel, OrderModel, OrderRepository, ProductModel, ProductRepository } from '../../../infra'
+import { Address, Customer, Order, OrderItem, Product } from '../../../domain'
 
 describe('Order repository test', () => {
   let sequelize: Sequelize

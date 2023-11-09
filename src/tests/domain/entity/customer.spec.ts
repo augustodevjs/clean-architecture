@@ -1,4 +1,4 @@
-import { Address, Customer } from "../../domain";
+import { Address, Customer } from "../../../domain";
 
 describe("Customer unit tests", () => {
   it("Should throw error when Id is empty", () => {
